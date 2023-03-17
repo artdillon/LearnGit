@@ -6,7 +6,7 @@ Open Source | Linux  : 庞大、不好管理
 
 集中式的版本控制系统：不好用，收费  带宽要大 不然不行
 
-<img src="C:\Users\admin\Desktop\Sync\LearnGit\images\image-20230315194915999.png" alt="集中式管理系统" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/c1ata/imgbed2020/imgimage-20230315194915999.png" alt="集中式管理系统" style="zoom:67%;" />
 
 The name "git" was given by Linus Torvalds when he wrote the very first version. He described the tool as "the stupid content tracker" 
 and the name as (depending on your way): 
@@ -85,3 +85,10 @@ git restore 撤销工作区未登记的文件的删除、修改和创建（撤�
 
 `git reset --hard HEAD^^`
 
+`git reflog` 查看命令历史，以便确定回到哪个版本
+
+### 工作区和暂存区
+
+**工作区**：电脑上能直接看到的目录 （Workding Directory）
+
+**版本库**：工作区中有一个隐藏的目录`.git` (Repository)
