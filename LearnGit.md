@@ -96,13 +96,11 @@ git restore 撤销工作区未登记的文件的删除、修改和创建（撤�
 - `暂存区`(Stage | Index)
 - First Branch -- `main`   HEAD 指向当前分支
 
- ![git-repo](https://cdn.jsdelivr.net/gh/c1ata/imgbed2020/img0)
+ ![git-repo](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/img0.jpg)
 
 多次`git add`操作，相当于把文件放到了暂存区，`git commit` 操作相当于一次性处理完暂存区的所有文件。
 
 没有`add`的文件，通过`git status`会显示 **Untracked Files**
-
- ![git-stage](https://www.liaoxuefeng.com/files/attachments/919020074026336/0)
 
 ### 远程仓库
 
@@ -242,3 +240,10 @@ Github: 为 Git Repository 提供托管服务
 `git clone git@github.com:USERNAME/REPOSITORY.git`
 
 ssh 速度最快
+
+### 分支管理
+
+平行宇宙
+
+ ![learn-branches](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/branch.png)
+
