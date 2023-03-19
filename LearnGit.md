@@ -247,3 +247,105 @@ ssh 速度最快
 
  ![learn-branches](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/branch.png)
 
+#### 创建与合并分支
+
+一条时间线就是一个分支
+
+ ![image-20230319195505165](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/image-20230319195505165.png)
+
+`main`指向最新提交，`HEAD`指向`main` 
+
+每`commit`一次，Git 用 `main` 指向最新的 `commit`, 再用 `HEAD` 指向 `main`
+
+随着不断的提交，main分支的线会越来越长
+
+  ![image-20230319200056196](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/image-20230319200056196.png)
+
+创建了一个新的分支`Dev`,Git 会新建一个指针` Dev`,指向`master`相同的提交，再把`HEAD`指向`dev`，就表示当前分支在`dev`上
+
+相当于切换了分支
+
+ ![image-20230319200440969](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/image-20230319200440969.png)
+
+Now,工作区的修改和提交都是针对Dev分支，main指针不变，Dev指针向前移动一步
+
+最简单的合并：main 指向 Dev的最新提交
+
+ ![image-20230319201705000](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/image-20230319201705000.png)
+
+Dev分区也可以删除
+
+创建`Dev` 分支，切换到`Dev`分支
+
+```shell
+$ git checkout -b Dev
+Switched to a new branch 'Dev'
+```
+
+`git checkout`命令加上`-b`参数表示**创建并切换**
+
+相当于：
+
+```bash
+$ git branch Dev
+$ git checkout Dev
+```
+
+利用`git branch` 常看当前分支
+
+```shell
+$ git branch
+* Dev
+  main
+```
+
+`git branch`命令会列出所有分支，当前分支前面会标一个`*`号
+
+可以在Dev分支上修改文件，然后切换到main分支上，发现修改已经消失
+
+```shell
+$ gir checkout main
+```
+
+
+
+ ![git-br-on-master](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/0.png)
+
+**分支的合并**
+
+把`dev`分支的工作成果合并到`main`分支
+
+```shell
+$ git merge Dev
+Updating 323e803..14c503b
+Fast-forward
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+```
+
+`Fast-forward`：直接把`main`指向`dev`的当前提交
+
+**删除分支**
+
+```shell
+$ git branch -d Dev
+Deleted branch Dev (was 14c503b).
+```
+
+使用`git branch`查看分支
+
+```bash
+$ git branch
+* main
+```
+
+PS.
+
+`git switch` 命令
+
+创建并切换分支 ：`git switch -c Dev`
+
+切换分支： `git switch Dev`
+
+#### 解决冲突
+
