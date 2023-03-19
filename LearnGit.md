@@ -165,3 +165,57 @@ Track的不是文件，而是修改。修改：增加了一行文字，甚至一
 删除的话：`git rm file `  记得要 `git commit -m "xxx"` 一下
 
 如果提交到版本库的话，还原的话只会还原到最新的那一版本。以前的未提交到版本库的内容则会丢失
+
+### 远程仓库（!）
+
+分布式：同一个**Git Repository**,可以分布再不同的机器上；
+
+有一台机器充当服务器的**Role** 
+
+Github: 为 Git Repository 提供托管服务
+
+#### `SSH` 密钥管理
+
+1. 检查现有SSH密钥
+   Git Bash -> `ls -al ~/.ssh`
+
+   - id_rsa.pub
+   - id_ecdsa.pub
+   - id_ed25519.pub
+
+2. 生成SSH密钥
+   Git Bash -> `ssh-keygen -t ed25519 -C "your_email@example.com"`
+
+   - 将以提供的电子邮件地址为标签创建新 SSH 密钥
+     （若以前存在密钥，可以自定义密钥名称）
+   - 设置安全密码
+
+3. 添加到SSH-Agent
+
+   - 确保 ssh-agent running
+     `start the ssh-agent in the background`
+     ```shell
+        $ eval "$(ssh-agent -s)"
+        > Agent pid 59566
+     ```
+     
+   - 将 SSH 私钥添加到 ssh-agent
+     `ssh-add ~/.ssh/id_ed25519`
+     
+   - 将 SSH 密钥添加到 GitHub 上的帐户
+
+     1. 复制SSH公钥
+        `clip < ~/.ssh/id_ed25519.pub`
+     2. Settings -> SSH and GPG keys -> New SSH key
+
+4. 测试SSH连接
+   `git -T git@github.com`
+
+#### 远程仓库 URL的切换
+
+将远程URL 从 HTTPS 切换到 SSH
+
+- 查看当前远程仓库的信息
+  `git remote -v`
+- `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git`
+
