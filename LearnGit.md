@@ -219,3 +219,26 @@ Github: 为 Git Repository 提供托管服务
   `git remote -v`
 - `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git`
 
+#### 添加或删除远程库
+
+本地库和远程库的名称要一致 
+
+**添加远程库**
+
+`git remote add origin git@github.com:USERNAME/REPOSITORY.git`
+
+**删除远程库**
+
+`git remote rm origin`
+
+**推送分支**
+
+第一次：`git push -u origin main` 把本地的分支和远程的分支 **绑定**
+
+`git push origin main`
+
+#### 从远程库克隆
+
+`git clone git@github.com:USERNAME/REPOSITORY.git`
+
+ssh 速度最快
