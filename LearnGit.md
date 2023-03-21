@@ -192,6 +192,7 @@ Github: 为 Git Repository 提供托管服务
 
    - 确保 ssh-agent running
      `start the ssh-agent in the background`
+     
      ```shell
         $ eval "$(ssh-agent -s)"
         > Agent pid 59566
@@ -348,4 +349,8 @@ PS.
 切换分支： `git switch Dev`
 
 #### 解决冲突
+
+**Preparations**：
+
+new branch: `feature1`
 
