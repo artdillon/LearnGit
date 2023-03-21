@@ -418,3 +418,36 @@ Deleted branch feature1 (was 8b509ec).
 
 #### 分支管理策略
 
+在`Fast  forward`模式下，删除分支后会丢失分支信息
+
+禁用`Fast Forward`模式，`merge`后会提交一个`commit`，需要`-m`参数，添加描述
+
+```shell
+git merge --no-ff -m "merge with --no-ff" dev
+Merge made by the 'ort' strategy.
+ readme.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+`--no-ff`参数，表示禁用`Fast forward`
+
+`git log --graph --oneline`查看合并信息
+
+```shell
+$ git log --graph --oneline
+*   a608261 (HEAD -> main) merge with --no-ff
+|\
+| * 11cd736 (dev) add haaaaaaaaa
+|/
+```
+
+ ![image-20230321154012482](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/image-20230321154012482.png)
+
+**分支策略**
+
+`main` 稳定，仅仅用来发布新版本
+
+`dev` 不稳定，开发
+
+每个人有自己的分支，然后合并到`dev`分支上
+
+ ![git-br-policy](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/git-strategy.png)
