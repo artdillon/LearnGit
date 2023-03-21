@@ -354,3 +354,67 @@ PS.
 
 new branch: `feature1`
 
+```shell
+# 创建并切换到 feature1 这个分支
+git switch -c feature1
+```
+
+![fff](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/image-20230321150037037.png)
+
+无法快速合并，出现冲突（`conflict`）
+
+```shell
+$ git merge feature1
+Auto-merging readme.txt
+CONFLICT (content): Merge conflict in readme.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+使用`git status`也可查看冲突
+
+```shell
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   readme.txt
+```
+
+可以直接查看冲突文件的内容：
+
+```
+<<<<<<< HEAD
+Creating a new branch is quick & simple.
+=======
+Creating a new branch is quick AND simple.
+>>>>>>> feature1
+```
+
+Git 使用 `<<<<<<<` , `=======` , `>>>>>>>` 标记不同分支
+
+修改之后再提交
+
+ ![image-20230321151300385](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/image-20230321151300385.png)
+
+使用`git log` 查看分支合并的情况:`git log --graph`命令可以看到分支合并图
+
+```shell
+$ git log --graph --pretty=oneline --abbrev-commit
+*   4ea7d21 (HEAD -> main) fix conflict
+|\
+| * 8b509ec (feature1) AND simple
+* | a6251d0 & simple
+|/
+```
+
+最后，删除`feature1`分支
+
+```shell
+$ git branch -d feature1
+Deleted branch feature1 (was 8b509ec).
+```
+
+#### 分支管理策略
+
