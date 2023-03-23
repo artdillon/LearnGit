@@ -451,3 +451,33 @@ $ git log --graph --oneline
 每个人有自己的分支，然后合并到`dev`分支上
 
  ![git-br-policy](https://cdn.jsdelivr.net/gh/c1ata/imagebed2023/img/git-strategy.png)
+
+#### Bug分支
+
+场景：面临bug需要来修复
+
+先在dev分区保留工作现场:  `git stash`
+
+切换到出现bug的分支： `git switch main`
+
+创建问题分支： `git switch -c issue-101`
+
+修复bug并提交： `git add bug-files` `git commit -m "Fix bug"`
+
+切换回bug分支 ：`git switch main`
+
+合并问题分支：`git merge --no-ff -m "fix issue101" issue-101`
+
+删除`issue-101` 分支： `git branch -d issue-101`
+
+回到`dev`分区继续开发,恢复工作现场：
+
+- `git stash list`:查看保存的工作现场（git将工作现场stash到某个地方了）
+- git stash apply
+- git stash drop
+- git stash pop
+- git stash apply stash@{0}
+
+修复 dev  分区的bug
+
+`git cherry-pick <commit>`命令，把bug提交的修改“复制”到当前分支
